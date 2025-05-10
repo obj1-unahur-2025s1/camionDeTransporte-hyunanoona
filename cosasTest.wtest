@@ -1,9 +1,11 @@
+import camion.*
 import cosas.*
 
 describe "group of test for cosas" {
 
-  test "first test" {
-    assert.that(true)
+  test "hay una cosa en el camion que pese entre 10 y 300" {
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    assert.that(camion.algunaCosaEntre(10, 300))
   }
-
 }

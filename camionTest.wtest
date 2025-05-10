@@ -1,9 +1,42 @@
 import camion.*
+import cosas.*
 
 describe "group of test for camion" {
 
-  test "first test" {
-    assert.that(true)
+  test "el peso del camion es de 1800"{
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    assert.equals(1800, camion.peso())
+  }
+
+  test "los pesos de las cosas son pares"{
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    assert.that(camion.losPesosSonPares())
+  }
+
+  test "en el camion hay una cosa que pese 500"{
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    assert.that(camion.buscarUnPeso(500))
+  }
+  
+  test "en el camion hay algo que tenga 10 de peligrosidad" {
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    assert.that(camion.buscarPeligrosidad(10))
+  }
+
+  test "hay una cosa en el camion que pese entre 10 y 300" {
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    assert.that(camion.algunaCosaEntre(10, 300))
+  }
+
+  test "la cosa mas pesada del camion es el knight rider" {
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    assert.equals(knightRider, camion.cosaMasPesada())
   }
 
 }
