@@ -3,9 +3,37 @@ import cosas.*
 
 describe "group of test for cosas" {
 
-  test "hay una cosa en el camion que pese entre 10 y 300" {
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
-    assert.that(camion.algunaCosaEntre(10, 300))
+  test "bumblebee robot tiene una peligrosidad de  30" {
+    bumblebee.transformar("robot")
+    assert.equals(30, bumblebee.peligrosidad())
+  }
+
+  test "los ladrillos pesan 30" {
+    ladrillos.añadirLadrillos(15)
+    assert.equals(30, ladrillos.peso())
+  }
+
+  test "el nivel de peligrosidad del embalaje con la arena es de 0.5" {
+    embalaje.envolver(arena)
+    assert.equals(0.5, embalaje.peligrosidad())
+  }
+
+  test "el peso de la bateria es de 200" {
+    bateria.hayMisiles(false)
+    assert.equals(200, bateria.peso())
+  }
+
+  test "la peligrosidad del contenedor es de 200" {
+    contenedor.agregar(bateria)
+    contenedor.agregar(knightRider)
+    contenedor.agregar(residuos)
+    assert.equals(200, contenedor.peligrosidad())
+  }
+
+  test "el peso del contenedor es de 900" {
+    contenedor.agregar(bateria)
+    contenedor.agregar(knightRider)
+    contenedor.agregar(residuos)
+    assert.equals(900, contenedor.peso())
   }
 }

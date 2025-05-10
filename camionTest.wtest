@@ -27,6 +27,28 @@ describe "group of test for camion" {
     assert.that(camion.buscarPeligrosidad(10))
   }
 
+  test "las cosas con peligrosidad mayor a 90 son la bateria y los residuos" {
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bateria)
+    camion.subirAlCamion(residuos)
+    assert.equals([bateria, residuos], camion.buscarCosasPeligrosas(90))
+  }
+
+  test "las cosas mas peligrosas que el knight rider son los residuos y bumblebee" {
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bumblebee)
+    camion.subirAlCamion(residuos)
+    assert.equals([bumblebee, residuos], camion.objetosMasPeligrososQue(knightRider))
+  }
+
+  test "puede circular en ruta" {
+    camion.subirAlCamion(knightRider)
+    camion.subirAlCamion(bumblebee)
+    camion.subirAlCamion(residuos)
+    residuos.agregarResiduos(10)
+    assert.that(camion.puedeCircularEnRuta(500))
+  }
+
   test "hay una cosa en el camion que pese entre 10 y 300" {
     camion.subirAlCamion(knightRider)
     camion.subirAlCamion(bateria)
