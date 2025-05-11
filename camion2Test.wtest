@@ -1,9 +1,9 @@
-import camion.*
-import cosas.*
+import cosas2.*
+import camion2.*
 
 describe "group of test for camion" {
   
-  test "el peso del camion es de 2310"{
+  test "el peso del camion es de 2200"{
     bumblebee.transformar("robot")
     camion.cargar(bumblebee)
     arena.agregar(150)
@@ -12,7 +12,7 @@ describe "group of test for camion" {
     ladrillos.añadirLadrillos(80)
     embalaje.envolver(ladrillos)
     camion.cargar(embalaje)
-    assert.equals(2310, camion.peso())
+    assert.equals(2200, camion.peso())
   }
 
 
@@ -52,7 +52,7 @@ describe "group of test for camion" {
     assert.notThat(camion.buscarPeligrosidad(10))
   }
 
-  test "la cosa con peligrosidad mayor a 90 es bumblebee" {
+  test "las cosas con peligrosidad mayor a 90 son bumblebee y la bateria" {
     bumblebee.transformar("robot")
     camion.cargar(bumblebee)
     arena.agregar(150)
@@ -61,10 +61,10 @@ describe "group of test for camion" {
     ladrillos.añadirLadrillos(80)
     embalaje.envolver(ladrillos)
     camion.cargar(embalaje)
-    assert.equals([bumblebee], camion.buscarCosasMasPeligrosasQue(10))
+    assert.equals([bumblebee, bateria], camion.buscarCosasMasPeligrosasQue(10))
   }
 
-  test "la cosa mas peligrosa que el knight rider es bumblebee" {
+  test "las cosas mas peligross que el knight rider son bumblebee y la bateria" {
     bumblebee.transformar("robot")
     camion.cargar(bumblebee)
     arena.agregar(150)
@@ -73,7 +73,7 @@ describe "group of test for camion" {
     ladrillos.añadirLadrillos(80)
     embalaje.envolver(ladrillos)
     camion.cargar(embalaje)
-    assert.equals([bumblebee], camion.objetosMasPeligrososQue(knightRider))
+    assert.equals([bumblebee, bateria], camion.objetosMasPeligrososQue(knightRider))
   }
 
   test "puede circular en ruta" {

@@ -1,0 +1,40 @@
+import cosas2.*
+import camion2.*
+
+describe "group of test for cosas" {
+
+  test "bumblebee robot tiene una peligrosidad de  30" {
+    bumblebee.transformar("robot")
+    assert.equals(30, bumblebee.peligrosidad())
+  }
+
+  test "los ladrillos pesan 30" {
+    ladrillos.añadirLadrillos(15)
+    assert.equals(30, ladrillos.peso())
+  }
+
+  test "el nivel de peligrosidad del embalaje con los residuos pesando 30 kg es de 100" {
+    embalaje.envolver(residuos)
+    residuos.agregarResiduos(30)
+    assert.equals(100, embalaje.peligrosidad())
+  }
+
+  test "el peso de la bateria es de 100" {
+    bateria.hayMisiles(true)
+    assert.equals(100, bateria.peso())
+  }
+
+  test "la peligrosidad del contenedor es de 200" {
+    contenedor.agregar(bateria)
+    contenedor.agregar(knightRider)
+    contenedor.agregar(residuos)
+    assert.equals(200, contenedor.peligrosidad())
+  }
+
+  test "el peso del contenedor es de 800" {
+    contenedor.agregar(bateria)
+    contenedor.agregar(knightRider)
+    contenedor.agregar(residuos)
+    assert.equals(800, contenedor.peso())
+  }
+}
