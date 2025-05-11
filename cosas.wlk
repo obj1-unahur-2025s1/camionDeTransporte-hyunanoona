@@ -33,14 +33,14 @@ object ladrillos {
 object arena {
     var peso = 0
     method peso() = peso
-    method agregarArena(unaCantidad) {
+    method agregar(unaCantidad) {
       peso = peso + unaCantidad
     }
     method peligrosidad() = 1
 }
 
 object bateria {
-    var property hayMisiles = true
+    var property hayMisiles = false
     method peso() {
       return
         if(hayMisiles){

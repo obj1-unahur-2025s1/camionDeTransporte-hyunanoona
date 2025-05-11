@@ -1,64 +1,115 @@
+import cosas2.*
 import camion.*
 import cosas.*
 
 describe "group of test for camion" {
-
-  test "el peso del camion es de 1800"{
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
-    assert.equals(1800, camion.peso())
+  
+  test "el peso del camion es de 2310"{
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
+    assert.equals(2310, camion.peso())
   }
 
+
   test "los pesos de las cosas son pares"{
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
     assert.that(camion.losPesosSonPares())
   }
 
   test "en el camion hay una cosa que pese 500"{
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
-    assert.that(camion.buscarUnPeso(500))
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
+    assert.notThat(camion.buscarUnPeso(500))
   }
   
   test "en el camion hay algo que tenga 10 de peligrosidad" {
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
-    assert.that(camion.buscarPeligrosidad(10))
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
+    assert.notThat(camion.buscarPeligrosidad(10))
   }
 
-  test "las cosas con peligrosidad mayor a 90 son la bateria y los residuos" {
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
-    camion.subirAlCamion(residuos)
-    assert.equals([bateria, residuos], camion.buscarCosasPeligrosas(90))
+  test "la cosa con peligrosidad mayor a 90 es la bateria" {
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
+    assert.equals([bumblebee], camion.buscarCosasMasPeligrosasQue(10))
   }
 
-  test "las cosas mas peligrosas que el knight rider son los residuos y bumblebee" {
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bumblebee)
-    camion.subirAlCamion(residuos)
-    assert.equals([bumblebee, residuos], camion.objetosMasPeligrososQue(knightRider))
+  test "las cosa mas peligrosa que el knight rider es bumblebee" {
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
+    assert.equals([bumblebee], camion.objetosMasPeligrososQue(knightRider))
   }
 
   test "puede circular en ruta" {
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bumblebee)
-    camion.subirAlCamion(residuos)
-    residuos.agregarResiduos(10)
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
     assert.that(camion.puedeCircularEnRuta(500))
   }
 
   test "hay una cosa en el camion que pese entre 10 y 300" {
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
     assert.that(camion.algunaCosaEntre(10, 300))
   }
 
-  test "la cosa mas pesada del camion es el knight rider" {
-    camion.subirAlCamion(knightRider)
-    camion.subirAlCamion(bateria)
-    assert.equals(knightRider, camion.cosaMasPesada())
+  test "la cosa mas pesada del camion es el bumblebee" {
+    bumblebee.transformar("robot")
+    camion.cargar(bumblebee)
+    arena.agregar(150)
+    camion.cargar(arena)
+    camion.cargar(bateria)
+    ladrillos.añadirLadrillos(80)
+    embalaje.envolver(ladrillos)
+    camion.cargar(embalaje)
+    assert.equals(bumblebee, camion.cosaMasPesada())
   }
-
 }

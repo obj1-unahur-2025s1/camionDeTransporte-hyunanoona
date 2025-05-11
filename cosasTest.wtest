@@ -13,14 +13,15 @@ describe "group of test for cosas" {
     assert.equals(30, ladrillos.peso())
   }
 
-  test "el nivel de peligrosidad del embalaje con la arena es de 0.5" {
-    embalaje.envolver(arena)
-    assert.equals(0.5, embalaje.peligrosidad())
+  test "el nivel de peligrosidad del embalaje con los residuos pesando 30 kg es de 100" {
+    embalaje.envolver(residuos)
+    residuos.agregarResiduos(30)
+    assert.equals(100, embalaje.peligrosidad())
   }
 
-  test "el peso de la bateria es de 200" {
-    bateria.hayMisiles(false)
-    assert.equals(200, bateria.peso())
+  test "el peso de la bateria es de 300" {
+    bateria.hayMisiles(true)
+    assert.equals(300, bateria.peso())
   }
 
   test "la peligrosidad del contenedor es de 200" {
@@ -30,10 +31,10 @@ describe "group of test for cosas" {
     assert.equals(200, contenedor.peligrosidad())
   }
 
-  test "el peso del contenedor es de 900" {
+  test "el peso del contenedor es de 800" {
     contenedor.agregar(bateria)
     contenedor.agregar(knightRider)
     contenedor.agregar(residuos)
-    assert.equals(900, contenedor.peso())
+    assert.equals(800, contenedor.peso())
   }
 }

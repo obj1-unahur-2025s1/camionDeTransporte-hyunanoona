@@ -3,9 +3,7 @@ object camion {
     
     const peso = 1000
     
-    method subirAlCamion(paquete) = carga.add(paquete)
-    
-    method bajarDelCamion(paquete) = carga.remove(paquete)
+    method cargar(paquete) = carga.add(paquete)
     
     method peso() = peso + carga.sum{p => p.peso()}
     
@@ -15,13 +13,13 @@ object camion {
     
     method buscarPeligrosidad(unValor) = carga.any{p => p.peligrosidad() == unValor}
     
-    method buscarCosasPeligrosas(unValor) = carga.filter{p => p.peligrosidad() > unValor}
+    method buscarCosasMasPeligrosasQue(unValor) = carga.filter{p => p.peligrosidad() > unValor}
 
     method objetosMasPeligrososQue(unaCosa) = carga.filter{p => p.peligrosidad() > unaCosa.peligrosidad()}
 
     method excedidoDePeso() = self.peso() > 2500
 
-    method puedeCircularEnRuta(unValor) = not self.excedidoDePeso() and carga.max{p => p.peligrosidad()}.peligrosidad() < unValor
+    method puedeCircularEnRuta(unValor) = not self.excedidoDePeso() and self.buscarCosasMasPeligrosasQue(unValor).isEmpty()
 
     method algunaCosaEntre(unPeso, otroPeso) = carga.any{p => p.peso().between(unPeso, otroPeso)}
 
